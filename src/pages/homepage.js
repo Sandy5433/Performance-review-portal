@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import LoginForm from '../components/LoginForm';
-// import signupForm from '../components/signupForm'
+import SignupForm from '../components/SignupForm';
 import { Modal, Card } from 'react-bootstrap';
 import img1 from '../images/img1.png'
 // import Link from
@@ -34,16 +34,14 @@ const Homepage = () => {
     <Card className="bg-dark text-white">
       <Card.Img src={img1} alt="login-signup" />
       <Card.ImgOverlay>
-        <Card.Title><button onClick={handleShow}> Login</button> | <button>Signup</button></Card.Title>
+        <Card.Title><button onClick={handleShow}> Login</button> | <button onClick={handleShow}>Signup</button></Card.Title>
       </Card.ImgOverlay>
     </Card>
     {console.log(show)}
     <Modal show={show} onHide={handleClose}>
-      {/* <signupForm/> */}
+      <SignupForm/>
       {/* <LoginForm/> */}
-      <Modal.Header>
-        <Modal.Title>Test header</Modal.Title>
-      </Modal.Header>
+   
       
     </Modal>
     </>

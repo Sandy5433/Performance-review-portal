@@ -10,12 +10,7 @@ const LoginForm = () => {
 
   return (
     <>
-      {/* <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+         <Modal.Header closeButton>
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -48,7 +43,6 @@ const LoginForm = () => {
             Login
           </Button>
         </Modal.Footer>
-      </Modal>
     </>
   );
 };

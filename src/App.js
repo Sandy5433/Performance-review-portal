@@ -2,7 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import Homepage from './pages/homepage'
 import React from 'react'
-// import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 
 function App() {
   return (

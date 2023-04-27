@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { validateEmail } from "../utils/helpers";
 
-const signupForm = () => {
+const SignupForm = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -54,7 +54,7 @@ const signupForm = () => {
   return (
     <>
 
-      <Modal show={show} onHide={handleClose}>
+      {/* <Modal show={show} onHide={handleClose}> */}
         <Modal.Header closeButton>
           <Modal.Title>Sign Up</Modal.Title>
         </Modal.Header>
@@ -66,7 +66,7 @@ const signupForm = () => {
                 type="text"
                 name="firstName"
                 placeholder="First name"
-                defaultValue={firstName}
+                // defaultValue={firstName}
                 autoFocus
               />
             </Form.Group>
@@ -121,9 +121,9 @@ const signupForm = () => {
             Sign Up
           </Button>
         </Modal.Footer>
-      </Modal>
+      {/* </Modal> */}
     </>
   );
 };
 
-export default signupForm;
+export default SignupForm;
