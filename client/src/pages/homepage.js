@@ -17,30 +17,32 @@ const Homepage = () => {
 
   return (
     <>
-    <Card className="w3-card-4 bg-dark text-white">
-      <Card.Img className="tiles" src={img1} alt="add-new-employee" />
-      <Card.ImgOverlay>
-        <Card.Title>Add New Employee</Card.Title>
+    <div className="flex-container">
+    <Card className="card-tile">
+      <Card.Img className="card-image" src={img1} alt="add-new-employee" />
+      <Card.ImgOverlay className='title'>
+        <Card.Title className="card-title">Add New Employee</Card.Title>
       </Card.ImgOverlay>
     </Card>
-    <Card className="bg-dark text-white">
-      <Card.Img className="tiles" src={img1} alt="search" />
-      <Card.ImgOverlay>
+    <Card className="card-tile">
+      <Card.Img className="card-image" src={img1} alt="search" />
+      <Card.ImgOverlay className='title'>
         <Card.Title>Search</Card.Title>
       </Card.ImgOverlay>
     </Card>
-    <Card className="bg-dark text-white">
-      <Card.Img className="tiles" src={img1} alt="performance-report" />
-      <Card.ImgOverlay>
+    <Card className="card-tile">
+      <Card.Img className="card-image" src={img1} alt="performance-report" />
+      <Card.ImgOverlay className='title'>
         <Card.Title>Performance Report</Card.Title>
       </Card.ImgOverlay>
     </Card>
-    <Card className="bg-dark text-white">
-      <Card.Img className="tiles" src={img1} alt="login-signup" />
-      <Card.ImgOverlay>
+    <Card className="card-tile">
+      <Card.Img className="card-image" src={img1} alt="login-signup" />
+      <Card.ImgOverlay className='title'>
         <Card.Title><button onClick={handleShowLogin}> Login</button> | <button onClick={handleShowSignup}>Signup</button></Card.Title>
       </Card.ImgOverlay>
     </Card>
+    </div>
     {console.log(showSignup)}
     <Modal show={showSignup} onHide={handleCloseSignup}>
       <SignupForm show={showSignup} handleClose={handleCloseSignup}/>

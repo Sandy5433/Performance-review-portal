@@ -1,7 +1,37 @@
 
-.tiles {
-    /* display: inline; */
-    border: solid;
-    /* width: 20%; */
-    border-color: aqua;
+.flex-container{
+    display: flex;
+}
+.card-tile:hover .title {
+    opacity: 1;
+}
+
+.card-tile:hover .card-image {
+    opacity: 0.3;
+}
+
+.card-tile {
+    margin: 20px;
+}
+
+.card-image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+
+  .title {
+    transition: .5s ease;
+    opacity: 0;
+  }
+
+.card-title{
+  color: rgba(241, 245, 9, 0.966);
+  background-color: rgba(36, 31, 31, 0.938);
+  font-size: 16px;
+  font-family:'Franklin Gothic Medium', Courier, 'Arial Narrow', Arial, sans-serif;
+  padding: 16px 32px;
 }
