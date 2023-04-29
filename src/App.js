@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Homepage from './pages/homepage'
+import Nav from './components/Nav'
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -8,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 function App() {
   return (
     <div>
+      <Nav/>
       <Homepage/>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />

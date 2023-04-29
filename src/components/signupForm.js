@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { validateEmail } from "../utils/helpers";
+import Auth from '../utils/auth';
 
 const SignupForm = () => {
   const [show, setShow] = useState(false);

@@ -13,26 +13,26 @@ const Homepage = () => {
 
   return (
     <>
-    <Card className="bg-dark text-white">
-      <Card.Img src={img1} alt="add-new-employee" />
+    <Card className="w3-card-4 bg-dark text-white">
+      <Card.Img className="tiles" src={img1} alt="add-new-employee" />
       <Card.ImgOverlay>
         <Card.Title>Add New Employee</Card.Title>
       </Card.ImgOverlay>
     </Card>
     <Card className="bg-dark text-white">
-      <Card.Img src={img1} alt="search" />
+      <Card.Img className="tiles" src={img1} alt="search" />
       <Card.ImgOverlay>
         <Card.Title>Search</Card.Title>
       </Card.ImgOverlay>
     </Card>
     <Card className="bg-dark text-white">
-      <Card.Img src={img1} alt="performance-report" />
+      <Card.Img className="tiles" src={img1} alt="performance-report" />
       <Card.ImgOverlay>
         <Card.Title>Performance Report</Card.Title>
       </Card.ImgOverlay>
     </Card>
     <Card className="bg-dark text-white">
-      <Card.Img src={img1} alt="login-signup" />
+      <Card.Img className="tiles" src={img1} alt="login-signup" />
       <Card.ImgOverlay>
         <Card.Title><button onClick={handleShow}> Login</button> | <button onClick={handleShow}>Signup</button></Card.Title>
       </Card.ImgOverlay>
