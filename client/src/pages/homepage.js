@@ -6,9 +6,13 @@ import img1 from '../images/img1.png'
 // import Link from
 
 const Homepage = () => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [showSignup, setShowSignup] = useState(false);
+  const handleCloseSignup = () => setShowSignup(false);
+  const handleShowSignup = () => setShowSignup(true);
+
+  const [showLogin, setShowLogin] = useState(false);
+  const handleCloseLogin = () => setShowLogin(false);
+  const handleShowLogin = () => setShowLogin(true);
   
 
   return (
@@ -34,16 +38,17 @@ const Homepage = () => {
     <Card className="bg-dark text-white">
       <Card.Img className="tiles" src={img1} alt="login-signup" />
       <Card.ImgOverlay>
-        <Card.Title><button onClick={handleShow}> Login</button> | <button onClick={handleShow}>Signup</button></Card.Title>
+        <Card.Title><button onClick={handleShowLogin}> Login</button> | <button onClick={handleShowSignup}>Signup</button></Card.Title>
       </Card.ImgOverlay>
     </Card>
-    {console.log(show)}
-    <Modal show={show} onHide={handleClose}>
-      <SignupForm/>
-      {/* <LoginForm/> */}
-   
-      
+    {console.log(showSignup)}
+    <Modal show={showSignup} onHide={handleCloseSignup}>
+      <SignupForm show={showSignup} handleClose={handleCloseSignup}/>
     </Modal>
+    <Modal show={showLogin} onHide={handleCloseLogin}>
+      <LoginForm show={showLogin} handleClose={handleCloseLogin}/>
+    </Modal>
+
     </>
   );
 }
