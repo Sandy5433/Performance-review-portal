@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const { signToken } = require('../utils/auth');
 
 module.exports = {
   getUsers(req, res) {
@@ -21,12 +22,30 @@ module.exports = {
     User.create(req.body)
       .then((dbUserData) => {
         console.log(dbUserData)
-        res.json(dbUserData)
+        const token = signToken(dbUserData)
+        !user
+          ? res.status(400).json({ message: 'Something is wrong!' })
+          : res.json( { token, dbUserData} )
       })
       .catch((err) => {
         console.log(err)
         res.status(500).json(err)
       });
+  },
+  //login a user, sign a token, and send it back 
+  async login({ body }, res) {
+    const user = await User.findOne({ $or: [{ _id: body.userId }, { email: body.email }] });
+    if (!user) {
+      return res.status(400).json({ message: "Can't find this user" });
+    }
+
+    const correctPw = await user.isCorrectPassword(body.password);
+
+    if (!correctPw) {
+      return res.status(400).json({ message: 'Wrong password!' });
+    }
+    const token = signToken(user);
+    res.json({ token, user });
   },
   //update user details
   updateUser(req, res) {

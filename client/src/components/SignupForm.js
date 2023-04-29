@@ -34,7 +34,6 @@ const SignupForm = ({show, handleClose}) => {
       }
     } else if (e.target.name === "password") {
       const pwLength = e.target.value.length;
-      var password1 = e.target.value;
       if (pwLength < 8) {
         setErrorMessage("Password must contain 8 or more characters");
       } else {
