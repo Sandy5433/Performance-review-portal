@@ -1,3 +1,6 @@
+*{
+  font-family:'Franklin Gothic Medium', Courier, 'Arial Narrow', Arial, sans-serif;
+}
 
 .flex-container{
     display: flex;

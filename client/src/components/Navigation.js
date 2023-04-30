@@ -1,11 +1,12 @@
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
+// import Container from 'react-bootstrap/Container';
+// import Navbar from 'react-bootstrap/Navbar';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import Auth from '../utils/auth'
 
-function Nav() {
-    const [show, setShow] = useState(false);
+function Navigation({handleShow, handleClose}) {
+    // const [show, setShow] = useState(false);
 
   return (
     <Navbar>
@@ -22,8 +23,8 @@ function Nav() {
                 <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
               ) : (
-                // <Nav.Link onClick={() => setShow(true)}>Login/Sign Up</Nav.Link>
-                null
+                <Nav.Link onClick={handleShow}>Login</Nav.Link>
+                
               )}
           
         </Navbar.Collapse>
@@ -32,4 +33,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default Navigation;
