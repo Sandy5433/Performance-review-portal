@@ -5,13 +5,12 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import Auth from '../utils/auth'
 
-function Navigation({handleShow, handleClose}) {
-    // const [show, setShow] = useState(false);
+function Navigation({setPage, handleShow, handleClose}) {
 
   return (
     <Navbar>
       <Container>
-        <Navbar.Brand href="#home">Home</Navbar.Brand>
+        <Navbar.Brand href="#home" onClick={() => {setPage("Homepage")}}>Home</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           {/* if user is logged in show saved books and logout */}

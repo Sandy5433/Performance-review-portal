@@ -17,14 +17,6 @@ const SignupForm = ({show, handleClose}) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value
-    })
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
     if (e.target.name === "email") {
       const isValid = validateEmail(e.target.value);
       if (!isValid) {
@@ -39,15 +31,43 @@ const SignupForm = ({show, handleClose}) => {
       } else {
         setErrorMessage("");
       }
-    } else if (!e.target.value.length) {
-      setErrorMessage(`${e.target.name} is required`);
-    } else {
-      setErrorMessage("");
-    }
+    } else if (e.target.name === "firstName") {
+      const validFirstName = e.target.value.trim();
+      if (!validFirstName) {
+        setErrorMessage("First name is required");
+      } else {
+        setErrorMessage("");
+      }
+    } else if (e.target.name === "lastName") {
+      const validLastName = e.target.value.trim();
+      if (!validLastName) {
+        setErrorMessage("Last name is required");
+      } else {
+         setErrorMessage("");
+      }
+    } 
     if (!errorMessage) {
-      setFormState({ ...formState, [e.target.name]: e.target.value });
+      setFormState({
+      ...formState,
+      [e.target.name]: e.target.value
+      })
     }
-    console.log(formState)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!errorMessage) {
+      console.log('Submit Form', formState);
+    } else  {
+      setErrorMessage("Please complete all required field")
+    }
+
+   
+  
+
+
+    // console.log(formState)
 
     fetch("/api/users/", {
       method: "POST",
@@ -64,7 +84,10 @@ const SignupForm = ({show, handleClose}) => {
     .then(res => res.json())
     .then(data => {
       console.log(data)
+      //store into local storage
+      //redirect to homepage
     })
+    handleClose();
   };
 
   return (
@@ -83,7 +106,7 @@ const SignupForm = ({show, handleClose}) => {
               placeholder="First name"
               // defaultValue={firstName}
               autoFocus
-              onChange={handleChange}
+              onBlur={handleChange}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -93,7 +116,7 @@ const SignupForm = ({show, handleClose}) => {
               name="lastName"
               placeholder="Last name"
               autoFocus
-              onChange={handleChange}
+              onBlur={handleChange}
 
             />
           </Form.Group>
@@ -104,7 +127,7 @@ const SignupForm = ({show, handleClose}) => {
               name="email"
               placeholder="name@example.com"
               autoFocus
-              onChange={handleChange}
+              onBlur={handleChange}
 
             />
           </Form.Group>
@@ -115,7 +138,7 @@ const SignupForm = ({show, handleClose}) => {
               name="password"
               placeholder="Your password"
               autoFocus
-              onChange={handleChange}
+              onBlur={handleChange}
 
             />
           </Form.Group>

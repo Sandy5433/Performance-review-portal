@@ -33,7 +33,7 @@ function App() {
 
   return (
     <div>
-      <Navigation handleShow={handleShowLogin}/>
+      <Navigation setPage={setCurrentPage} handleShow={handleShowLogin}/>
       
       <Container>
         {renderPage()}
