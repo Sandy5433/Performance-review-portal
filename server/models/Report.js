@@ -22,6 +22,10 @@ const reportSchema = new Schema(
         name: {
             type: String,
             required: true,
+        },
+        user_id: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
         }
     },
     {

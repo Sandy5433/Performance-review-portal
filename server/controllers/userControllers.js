@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const { signToken } = require('../utils/auth');
+const {signToken} = require("../utils/auth")
 
 module.exports = {
   getUsers(req, res) {
@@ -23,7 +23,7 @@ module.exports = {
     User.create(req.body)
       .then((dbUserData) => {
         console.log(dbUserData)
-        const token = signT oken(dbUserData)
+        const token = signToken(dbUserData)
         !dbUserData
           ? res.status(400).json({ message: 'Something is wrong!' })
           : res.json( { token, dbUserData} )
@@ -34,19 +34,31 @@ module.exports = {
       });
   },
   //login a user, sign a token, and send it back 
-  async login({ body }, res) {
-    const user = await User.findOne({ email: body.email });
+  async login(req, res) {
+    console.log(req.body)
+    const user = await User.findOne({ email: req.body.email });
     if (!user) {
       return res.status(400).json({ message: "Can't find this user" });
     }
 
-    const correctPw = await user.isCorrectPassword(body.password);
+    const correctPw = await user.isCorrectPassword(req.body.password);
 
     if (!correctPw) {
       return res.status(400).json({ message: 'Wrong password!' });
     }
+
+    console.log("logged in!")
     const token = signToken(user);
-    res.json({ token, user });
+
+    req.session.save(() => {
+      req.session.logged_in = true;
+      req.session.user_id = user._id
+
+      console.log("session saved!")
+
+      res.json({ token, user });
+    })
+
   },
   //update user details
   updateUser(req, res) {

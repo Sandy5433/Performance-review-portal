@@ -17,9 +17,25 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+
+  getReportsByUser(req, res) {
+    Report.find({ user_id: req.session.user_id })
+      .select('-__v')
+      .then((report) =>
+        !report
+          ? res.status(404).json({ message: 'No report with that ID' })
+          : res.json(report)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
   // create a new report
   createReport(req, res) {
-    Report.create(req.body)
+    if(req.session.logged_in) {
+      console.log("User is logged in! Can create a report")
+      Report.create({
+        ...req.body,
+        user_id: req.session.user_id
+      })
       .then((dbReportData) => {
         console.log(dbReportData)
         const token = signToken(dbReportData)
@@ -31,6 +47,10 @@ module.exports = {
         console.log(err)
         res.status(500).json(err)
       });
+    } else {
+      console.log("User is not logged in!")
+      res.status(400).json({ message: 'Not logged in!' })
+    }
   },
 
   //update report details

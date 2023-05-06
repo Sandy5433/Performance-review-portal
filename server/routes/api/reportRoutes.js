@@ -5,10 +5,12 @@ const {
   createReport,
   updateReport,
   deleteReport,
+  getReportsByUser,
 } = require('../../controllers/reportControllers');
 
 // /api/reports
 console.log("test")
+router.route("/byUser").get(getReportsByUser)
 router.route('/').get(getReports);
 router.route('/').post(createReport);
 

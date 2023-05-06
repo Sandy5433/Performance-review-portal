@@ -46,6 +46,7 @@ const SignupForm = ({show, handleClose}) => {
          setErrorMessage("");
       }
     } 
+    console.log(formState)
     if (!errorMessage) {
       setFormState({
       ...formState,
@@ -59,6 +60,25 @@ const SignupForm = ({show, handleClose}) => {
 
     if (!errorMessage) {
       console.log('Submit Form', formState);
+      fetch("/api/users/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          firstName: formState.firstName,
+          lastName: formState.lastName,
+          email: formState.email,
+          password: formState.password
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        //store into local storage
+        //redirect to homepage
+        handleClose();
+      })
     } else  {
       setErrorMessage("Please complete all required field")
     }
@@ -69,25 +89,7 @@ const SignupForm = ({show, handleClose}) => {
 
     // console.log(formState)
 
-    fetch("/api/users/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-        email: formState.email,
-        password: formState.password
-      })
-    })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      //store into local storage
-      //redirect to homepage
-    })
-    handleClose();
+   
   };
 
   return (
