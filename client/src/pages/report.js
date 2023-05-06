@@ -25,24 +25,25 @@ const Report = ({ setPage }) => {
       e.stopPropagation();
     }
 
-    const createReport = (input) => {
-      return fetch("/api/report", {
+    const createReport = ({name, pro, con}) => {
+      return fetch("/api/reports", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(input),
+        body: JSON.stringify({name, pro, con}),
       });
     };
 
     try {
       const response = await createReport(reportData);
-      if (response.ok) {
+      if (!response.ok) {
         throw new Error("something went wrong!");
       }
-      const { token, user } = await response.json();
-      console.log(user);
-      Auth.login(token);
+      debugger
+      const data = await response.json();
+      console.log(data);
+      // Auth.login(token);
     } catch (err) {
       console.error(err);
     }

@@ -3,11 +3,11 @@ const dayjs = require('dayjs')
 
 const reportSchema = new Schema(
     {
-        strength: {
+        pro: {
             type: String,
             required: true,
         },
-        weakness: {
+        con: {
             type: String,
             required: true,
         },
@@ -19,7 +19,7 @@ const reportSchema = new Schema(
               return dayjs(date).format('ddd D MMM, YYYY h:mm A')
             }
         },
-        author: {
+        name: {
             type: String,
             required: true,
         }

@@ -106,7 +106,7 @@ const SignupForm = ({show, handleClose}) => {
               placeholder="First name"
               // defaultValue={firstName}
               autoFocus
-              onBlur={handleChange}
+              onChange={handleChange}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -116,7 +116,7 @@ const SignupForm = ({show, handleClose}) => {
               name="lastName"
               placeholder="Last name"
               autoFocus
-              onBlur={handleChange}
+              onChange={handleChange}
 
             />
           </Form.Group>
@@ -127,7 +127,7 @@ const SignupForm = ({show, handleClose}) => {
               name="email"
               placeholder="name@example.com"
               autoFocus
-              onBlur={handleChange}
+              onChange={handleChange}
 
             />
           </Form.Group>
@@ -138,7 +138,7 @@ const SignupForm = ({show, handleClose}) => {
               name="password"
               placeholder="Your password"
               autoFocus
-              onBlur={handleChange}
+              onChange={handleChange}
 
             />
           </Form.Group>
