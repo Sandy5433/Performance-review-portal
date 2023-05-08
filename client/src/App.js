@@ -5,6 +5,7 @@ import Report from './pages/report';
 import Search from './pages/search';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
+import EditReport from './components/EditReport';
 import { Modal, Container } from 'react-bootstrap';
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -27,8 +28,11 @@ function App() {
     } else if(currentPage == "Report") {
       return <Report/>
     } else if(currentPage == "Search") {
-      return <Search />
-    } 
+      return <Search setPage={setCurrentPage}/>
+    } else if(currentPage == "EditReport") {
+      return <EditReport/>
+    }
+
   }
 
   return (

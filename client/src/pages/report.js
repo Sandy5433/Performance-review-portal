@@ -40,12 +40,12 @@ const Report = ({ setPage }) => {
       if (!response.ok) {
         throw new Error("something went wrong!");
       }
-      debugger
       const data = await response.json();
       console.log(data);
       // Auth.login(token);
     } catch (err) {
       console.error(err);
+      setShowAlert(true);
     }
 
     setReportData({
@@ -80,7 +80,7 @@ const Report = ({ setPage }) => {
       <h5>Performance report</h5>
       <Form noValidate validated={validated} className="form" id="report-form" onSubmit={handleSubmit}>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-          Something went wrong with your signup!
+          Something went wrong with your login credentials!
         </Alert>
         <Form.Group className='mb-3'>
           <Form.Label htmlFor='name'>Employee Name:</Form.Label>

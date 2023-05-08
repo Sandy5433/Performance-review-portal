@@ -72,7 +72,7 @@ module.exports = {
   },
   // delete report by report ID
   deleteReport(req, res) {
-    User.findOneAndRemove({ _id: req.params.reportId })
+    Report.findOneAndRemove({ _id: req.params.reportId })
       .then((report) =>
         !report
           ? res.status(404).json({ message: 'No report with this id!' })

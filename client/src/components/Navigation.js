@@ -16,8 +16,8 @@ function Navigation({setPage, handleShow, handleClose}) {
           {/* if user is logged in show saved books and logout */}
           {Auth.loggedIn() ? (
                 <>
-                <Navbar.Text>
-                Signed in as: <a href="#login">FirstName LastName</a>
+                <Navbar.Text id="welcome">
+                Welcome back!
                 </Navbar.Text>
                 <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>

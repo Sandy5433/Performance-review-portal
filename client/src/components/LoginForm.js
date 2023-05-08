@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import Auth from "../utils/auth";
 
 const LoginForm = ({show, handleClose}) => {
   const [formState, setFormState] = useState({
@@ -12,22 +13,6 @@ const LoginForm = ({show, handleClose}) => {
 
  
   const handleChange = (e) => {
-    // if (e.target.name === "email") {
-    //   const isValid = validateEmail(e.target.value);
-    //   if (!isValid) {
-    //     setErrorMessage("Please enter a valid email");
-    //   } else {
-    //     setErrorMessage("");
-    //   }
-    // } else if (e.target.name === "password") {
-    //   const pwLength = e.target.value.length;
-    //   if (pwLength < 8) {
-    //     setErrorMessage("Password must contain 8 or more characters");
-    //   } else {
-    //     setErrorMessage("");
-    //   }
-    // } 
-  
     console.log(formState)
     if (!errorMessage) {
       setFormState({
@@ -36,47 +21,58 @@ const LoginForm = ({show, handleClose}) => {
       })
     }
   }
-  
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     setErrorMessage("")
 
     if (!errorMessage) {
       console.log('Submit Form', formState);
-      fetch("/api/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          email: formState.email,
-          password: formState.password
+      
+      try{
+        const res = await fetch(
+        "/api/users/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email: formState.email,
+            password: formState.password
+          })
         })
-      })
-      .then(res => {
-        console.log(res.status)
-        if(res.status == "200") {
-          handleClose()
-        } else {
-          setErrorMessage("Login error")
+        if (!res.ok){
+          throw new Error('something went wrong!')
         }
-      })
-      // .then(res => res.json())
-      // .then(data => {
-      //   console.log(data)
-      //   //store into local storage
-      //   //redirect to homepage
+        handleClose()
+        const { token, user } = await res.json();
+        console.log(user);
+        Auth.login(token);
+      } catch (err){
+        console.log(err)
+        setErrorMessage("Login error")
+      }
 
-      //   if(data.message) {
-      //     setErrorMessage(data.message)
+      // fetch("/api/users/login", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json"
+      //   },
+      //   body: JSON.stringify({
+      //     email: formState.email,
+      //     password: formState.password
+      //   })
+      // })
+      // .then(res => {
+      //   console.log(res.status)
+      //   if(res.status == "200") {
+          
+      //     handleClose()
       //   } else {
-      //     handleClose();
+      //     setErrorMessage("Login error")
       //   }
       // })
-    } else  {
-      // setErrorMessage("Please complete all required field")
-    }
-
+    
+    } 
    
   };
   return (

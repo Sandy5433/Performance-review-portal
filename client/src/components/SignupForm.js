@@ -26,8 +26,8 @@ const SignupForm = ({show, handleClose}) => {
       }
     } else if (e.target.name === "password") {
       const pwLength = e.target.value.length;
-      if (pwLength < 8) {
-        setErrorMessage("Password must contain 8 or more characters");
+      if (pwLength < 4) {
+        setErrorMessage("Password must contain more than 4 characters");
       } else {
         setErrorMessage("");
       }
@@ -75,6 +75,7 @@ const SignupForm = ({show, handleClose}) => {
       .then(res => res.json())
       .then(data => {
         console.log(data)
+        // Auth.login(token)
         //store into local storage
         //redirect to homepage
         handleClose();
