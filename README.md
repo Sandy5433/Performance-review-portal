@@ -3,7 +3,7 @@
   ## Description
   This is a space where manager can securely upload performance reports of their staff. It allows managers to document feedbacks and set goals of a particular staff to track their progress. 
   Below is a screenshot of the deployed webpage:
-  ![alt="portfolio"](./src/images/portfolio.png)
+  ![alt="portfolio"](./client/src/images/portal.png)
 
   ## Table of Contents
   - [Description](#description)
