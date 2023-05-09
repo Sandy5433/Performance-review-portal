@@ -21,7 +21,7 @@
   "homepage": "https://github.com/Sandy5433/Performance-review-portal#readme",
   "dependencies": {
     "concurrently": "^8.0.1",
-    "express": "*",
+    "express": "^4.18.2",
     "nodemon": "^2.0.22"
   }
 }
