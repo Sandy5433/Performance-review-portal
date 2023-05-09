@@ -44,6 +44,7 @@
   padding: 10px;
   border: solid;
   border-radius: 5px;
+  border-color: rgba(96, 98, 226, 0.703);
 
 }
 
@@ -54,4 +55,16 @@
 Card.Image {
   width: 50px;
   height: 50px;
+}
+
+.button {
+  border-radius: 10px;
+  border-color: rgb(235, 106, 151);
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.navbar{
+  background-color: rgba(102, 132, 217, 0.689);
+  margin-bottom: 30px;
 }

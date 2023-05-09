@@ -8,7 +8,7 @@ import Auth from '../utils/auth'
 function Navigation({setPage, handleShow, handleClose}) {
 
   return (
-    <Navbar>
+    <Navbar className='navbar'>
       <Container>
         <Navbar.Brand href="#home" onClick={() => {setPage("Homepage")}}>Home</Navbar.Brand>
         <Navbar.Toggle />
