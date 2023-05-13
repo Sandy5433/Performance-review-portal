@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"cd server && npm run server\" \"cd client && npm run start\"",
-    "install": "cd server && npm i && cd ../client && npm i"
+    "start": "cd server && npm run server",
+    "develop": "concurrently \"cd server && npm run server\" \"cd client && npm run start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
