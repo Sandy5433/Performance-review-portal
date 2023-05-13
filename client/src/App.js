@@ -22,15 +22,17 @@ function App() {
 
   const [currentPage, setCurrentPage] = useState("Homepage")
 
+  const [currentReport, setCurrentReport] = useState({});
+
   function renderPage () {
     if(currentPage == "Homepage") {
       return <Homepage setPage={setCurrentPage} showModalLogin={handleShowLogin} showModalSignup={handleShowSignup}/>
     } else if(currentPage == "Report") {
       return <Report/>
     } else if(currentPage == "Search") {
-      return <Search setPage={setCurrentPage}/>
+      return <Search setPage={setCurrentPage} setCurrentReport={setCurrentReport}/>
     } else if(currentPage == "EditReport") {
-      return <EditReport/>
+      return <EditReport currentReport={currentReport}/>
     }
 
   }

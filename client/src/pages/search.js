@@ -2,7 +2,7 @@ import React, {useState, useEffect}  from 'react'
 import useFetch from '../utils/useFetch'
 
 
-const Search = ({setPage}) => {
+const Search = ({setPage, setCurrentReport}) => {
 
   // const [reports, setReports] = useState([])
 
@@ -83,7 +83,10 @@ const Search = ({setPage}) => {
           <p>Employee name: {input.name}</p>
           <p>Area of strong performance: {input.pro}</p>
           <p>Area requiring improvement: {input.con}</p>
-          <button className='button' id={input._id} onClick={()=>{setPage("EditReport")}}>Edit</button>
+          <button className='button' id={input._id} onClick={()=>{
+            setPage("EditReport");
+            setCurrentReport(input)
+            }}>Edit</button>
           {/* <button id={input._id} onClick={handleUpdate}>Update</button> */}
           <button className='button' id={input._id} onClick={handleDelete}>Delete</button>
           <p>Posted on {input.createdAt}</p>
