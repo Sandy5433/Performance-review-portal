@@ -2,6 +2,7 @@
 
 const session = require("express-session");
 const db = require('./config/connections');
+const path = require("path")
 const express = require('express')
 const routes = require('./routes');
 const PORT = process.env.PORT || 3001;
